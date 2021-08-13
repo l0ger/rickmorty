@@ -10,9 +10,12 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.7",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "5.x",
     "@react-navigation/stack": "5.x",
+    "graphql": "^15.5.1",
+    "graphql-tag": "^2.12.5",
     "react": "17.0.1",
     "react-native": "0.64.1",
     "react-native-gesture-handler": "^1.10.3",

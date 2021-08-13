@@ -1,18 +1,21 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import {StatusBar, StyleSheet, useColorScheme} from 'react-native';
-
+import {StatusBar, useColorScheme} from 'react-native';
+import {ApolloProvider} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
 import {AppNavigator} from './common/navigation/appNavigator';
+import apolloClient from './common/configuration/apollo-client.configuration';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <NavigationContainer>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppNavigator />
-    </NavigationContainer>
+    <ApolloProvider client={apolloClient}>
+      <NavigationContainer>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <AppNavigator />
+      </NavigationContainer>
+    </ApolloProvider>
   );
 };
 
