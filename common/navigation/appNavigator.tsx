@@ -2,13 +2,9 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {screenOptions} from './navigationConfigs';
 import Screens from '../../screens';
+import {RouteParamsType} from '../types/navigation.types';
 
-export type RouteParams = {
-  Home: undefined;
-  Profile: {userId: string};
-};
-
-const RootNavigator = createStackNavigator<RouteParams | any>();
+const RootNavigator = createStackNavigator<RouteParamsType | any>();
 
 export const AppNavigator = () => {
   return (

@@ -8,6 +8,7 @@ const CHARACTER_READ_QUERY = gql`
         pages
       }
       results {
+        id
         name
         image
       }

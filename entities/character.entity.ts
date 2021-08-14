@@ -6,5 +6,5 @@ export interface CharacterEntity {
   image: string;
   gender?: string;
   species?: string;
-  episode?: EpisodeEntity;
+  episode?: EpisodeEntity[];
 }

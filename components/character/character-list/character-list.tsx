@@ -6,14 +6,14 @@ import {
   ListRenderItem,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import CharacterListItem from './character-list-item';
-import {Loading, Separator} from '../../common/components';
-import {CharacterEntity} from '../../entities/character.entity';
+import {Loading, Separator} from '../../../common/components';
+import {CharacterEntity} from '../../../entities/character.entity';
 import {useQuery} from '@apollo/client';
-import CHARACTER_READ_QUERY from '../../queries/character/character-read.query';
+import CHARACTER_READ_QUERY from '../../../queries/character/character-list-read.query';
 
-export const CharacterList = () => {
+const CharacterList: FC = () => {
   const pageSize = 20;
   // const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -53,13 +53,13 @@ export const CharacterList = () => {
     );
   };
 
-  const onItemPress = (id: number) => {
+  const onItemPress = (name: string) => {
     // dispatch(getUserProfileRequestAction({id}));
-    navigation.navigate('Profile', {userId: id});
+    navigation.navigate('CharacterDetails', {characterName: name});
     return true;
   };
   const renderItem: ListRenderItem<CharacterEntity> = ({item}) => {
-    return <CharacterListItem user={item} onPress={onItemPress} />;
+    return <CharacterListItem character={item} onPress={onItemPress} />;
   };
   const handleRefresh = () => {
     setRefreshing(true);
@@ -73,10 +73,10 @@ export const CharacterList = () => {
     <View style={styles.main}>
       <FlatList
         contentContainerStyle={styles.flatListContainer}
-        data={data.characters.result}
+        data={data.characters.results}
         extraData={loading}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={item => String(item.id)}
         onEndReachedThreshold={0.5}
         onEndReached={handleLoadMore}
         ItemSeparatorComponent={() => <Separator />}
@@ -105,3 +105,5 @@ const styles = StyleSheet.create({
   },
   separator: {width: '100%', height: 1, backgroundColor: 'gray'},
 });
+
+export default CharacterList;

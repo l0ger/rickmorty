@@ -6,19 +6,20 @@ import {
   Image,
   TouchableNativeFeedback,
 } from 'react-native';
-import {CharacterEntity} from '../../entities/character.entity';
+import {CharacterEntity} from '../../../entities/character.entity';
 
 export interface UserListItemProps {
-  user: CharacterEntity;
-  onPress: (id: number) => boolean;
+  character: CharacterEntity;
+  onPress: (name: string) => boolean;
 }
-const CharacterListItem = ({user, onPress}: UserListItemProps) => {
-  const {id, name, image} = user;
+const CharacterListItem = ({character, onPress}: UserListItemProps) => {
+  const {name, image} = character;
+
   return (
-    <TouchableNativeFeedback onPress={() => onPress(id)}>
+    <TouchableNativeFeedback onPress={() => onPress(name)}>
       <View style={styles.container}>
-        <Image source={{uri: image}} style={styles.userImage} />
-        <Text style={styles.userInfo}>{`${name}`}</Text>
+        <Image source={{uri: image}} style={styles.image} />
+        <Text style={styles.info}>{`${name}`}</Text>
       </View>
     </TouchableNativeFeedback>
   );
@@ -32,13 +33,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 60,
   },
-  userImage: {
+  image: {
     width: 50,
     height: 50,
     resizeMode: 'cover',
     borderRadius: 25,
   },
-  userInfo: {
+  info: {
     color: 'black',
     fontSize: 14,
     textAlign: 'center',
