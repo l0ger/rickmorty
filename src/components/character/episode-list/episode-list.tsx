@@ -1,7 +1,7 @@
 import {StyleSheet, View, useWindowDimensions} from 'react-native';
 import React, {FC} from 'react';
 import EpisodeListItem from './episod-list-item';
-import {EpisodeEntity} from '../../../entities/Episode.entity';
+import {EpisodeEntity} from '../../../entities/episode.entity';
 import {Separator} from '../../../common/components';
 
 interface EpisodeListProps {
@@ -13,9 +13,9 @@ const EpisodeList: FC<EpisodeListProps> = ({episode}) => {
   return (
     <View style={styles.main}>
       {episode.map(episodeItem => (
-        <View style={{width: window.width}}>
+        <View key={episodeItem.id} style={{width: window.width}}>
           <Separator />
-          <EpisodeListItem key={episodeItem.id} episode={episodeItem} />
+          <EpisodeListItem episode={episodeItem} />
         </View>
       ))}
     </View>

@@ -6,7 +6,7 @@ const Separator = () => {
 };
 
 const styles = StyleSheet.create({
-  separator: {width: '100%', height: 1, backgroundColor: '#c6c6c6'},
+  separator: {width: '100%', height: 1, backgroundColor: '#e2e2e2'},
 });
 
 export default Separator;

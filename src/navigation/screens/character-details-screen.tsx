@@ -7,7 +7,7 @@ import {
   InfoRow,
   CollapseView,
 } from '../../common/components';
-import {ScreenProps} from '../../common/types/navigation.types';
+import {ScreenProps} from '../../common/types/navigation.type';
 import {useQuery} from '@apollo/client';
 import CHARACTER_DETAILS_READ_QUERY from '../../queries/character/character-details-read.query';
 import {CharacterEntity} from '../../entities/character.entity';

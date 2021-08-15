@@ -8,3 +8,11 @@ export interface CharacterEntity {
   species?: string;
   episode?: EpisodeEntity[];
 }
+
+export interface CharacterFilter {
+  name?: string;
+  status?: 'dead' | 'alive' | 'unknown';
+  species?: string;
+  type?: string;
+  gender?: 'female' | 'male' | 'genderless' | 'unknown';
+}

@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import {ScreenProps} from '../../common/types/navigation.types';
+import {ScreenProps} from '../../common/types/navigation.type';
 
 const SearchCharacterScreen: FC<ScreenProps<'SearchCharacter'>> = ({route}) => {
   const {searchWord} = route.params || {};

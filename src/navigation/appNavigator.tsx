@@ -1,8 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {screenOptions} from './navigationConfigs';
-import Screens from './screens/index';
-import {RouteParamsType} from '../common/types/navigation.types';
+import Screens from './screens';
+import {RouteParamsType} from '../common/types/navigation.type';
 
 const RootNavigator = createStackNavigator<RouteParamsType | any>();
 
