@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    // height: 60,
   },
   episodeName: {
     fontSize: 14,

@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {CharacterList} from '../components/character/character-list';
+import {CharacterList} from '../../components/character/character-list';
 
 const HomeScreen: FC = () => {
   return (

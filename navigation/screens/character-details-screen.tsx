@@ -6,12 +6,12 @@ import {
   Separator,
   InfoRow,
   CollapseView,
-} from '../common/components';
-import {ScreenProps} from '../common/types/navigation.types';
+} from '../../common/components';
+import {ScreenProps} from '../../common/types/navigation.types';
 import {useQuery} from '@apollo/client';
-import CHARACTER_DETAILS_READ_QUERY from '../queries/character/character-details-read.query';
-import {CharacterEntity} from '../entities/character.entity';
-import EpisodeList from '../components/character/episode-list/episode-list';
+import CHARACTER_DETAILS_READ_QUERY from '../../queries/character/character-details-read.query';
+import {CharacterEntity} from '../../entities/character.entity';
+import EpisodeList from '../../components/character/episode-list/episode-list';
 
 const CharacterDetailsScreen: FC<ScreenProps<'CharacterDetails'>> = ({
   route,
@@ -44,7 +44,6 @@ const CharacterDetailsScreen: FC<ScreenProps<'CharacterDetails'>> = ({
         <Separator />
         <InfoRow value={character.gender} label={'Gender'} />
         <Separator />
-
         <CollapseView text={'Episode'}>
           <EpisodeList episode={character.episode || []} />
         </CollapseView>
@@ -59,7 +58,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    // paddingVertical: 20,
   },
 });
 

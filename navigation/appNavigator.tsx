@@ -1,12 +1,12 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {screenOptions} from './navigationConfigs';
-import Screens from '../../screens';
-import {RouteParamsType} from '../types/navigation.types';
+import Screens from './screens/index';
+import {RouteParamsType} from '../common/types/navigation.types';
 
 const RootNavigator = createStackNavigator<RouteParamsType | any>();
 
-export const AppNavigator = () => {
+const AppNavigator = () => {
   return (
     <RootNavigator.Navigator
       initialRouteName="Home"
@@ -22,3 +22,4 @@ export const AppNavigator = () => {
     </RootNavigator.Navigator>
   );
 };
+export default AppNavigator;

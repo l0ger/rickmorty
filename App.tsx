@@ -3,7 +3,7 @@ import 'react-native-gesture-handler';
 import {StatusBar, useColorScheme} from 'react-native';
 import {ApolloProvider} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
-import {AppNavigator} from './common/navigation/appNavigator';
+import AppNavigator from './navigation/appNavigator';
 import apolloClient from './common/configuration/apollo-client.configuration';
 
 const App = () => {

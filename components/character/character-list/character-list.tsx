@@ -8,7 +8,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useEffect, useState} from 'react';
 import CharacterListItem from './character-list-item';
-import {Loading, Separator} from '../../../common/components';
+import {Loading, SearchInput, Separator} from '../../../common/components';
 import {CharacterEntity} from '../../../entities/character.entity';
 import {useQuery} from '@apollo/client';
 import CHARACTER_READ_QUERY from '../../../queries/character/character-list-read.query';
@@ -71,6 +71,10 @@ const CharacterList: FC = () => {
   }
   return (
     <View style={styles.main}>
+      {/*<SearchInput*/}
+      {/*  placeholder={'Search character name...'}*/}
+      {/*  containerStyle={{margin: 5}}*/}
+      {/*/>*/}
       <FlatList
         contentContainerStyle={styles.flatListContainer}
         data={data.characters.results}
