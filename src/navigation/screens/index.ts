@@ -3,7 +3,6 @@ import CharacterDetailsScreen from './character-details-screen';
 import SearchCharacterScreen from './search-character-screen';
 import HomeScreenHeader from '../home-screen-header';
 import SearchCharacterScreenHeader from '../search-character-header-title';
-import {StackNavigationOptions} from '@react-navigation/stack';
 
 const Screens = [
   {
