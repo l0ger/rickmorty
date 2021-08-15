@@ -1,13 +1,14 @@
 import React, {FC} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {ScreenProps} from '../../common/types/navigation.type';
+import {CharacterList} from '../../components/character/character-list';
 
 const SearchCharacterScreen: FC<ScreenProps<'SearchCharacter'>> = ({route}) => {
   const {searchWord} = route.params || {};
 
   return (
     <View style={styles.mainView}>
-      <Text style={{color: 'black'}}>{searchWord}</Text>
+      <CharacterList filter={{name: searchWord}} />
     </View>
   );
 };

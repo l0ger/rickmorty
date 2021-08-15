@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 function usePagination<T>(
   fetchedData: Array<T> | undefined,
   totalPage: number | undefined,
+  filter: any,
 ) {
   const [currentPage, setCurrentPage] = useState(1);
   const [paginatedData, setPaginatedData] = useState<Array<T>>(
@@ -13,6 +14,11 @@ function usePagination<T>(
       setPaginatedData(prev => [...prev, ...fetchedData]);
     }
   }, [fetchedData]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    setPaginatedData([]);
+  }, [filter]);
   const nextPage = (page = -1) => {
     if (page === 1) {
       setPaginatedData([]);

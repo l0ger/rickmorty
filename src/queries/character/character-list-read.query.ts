@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 const CHARACTER_READ_QUERY = gql`
-  query Characters($currentPage: Int) {
-    characters(page: $currentPage) {
+  query Characters($currentPage: Int, $filter: FilterCharacter) {
+    characters(page: $currentPage, filter: $filter) {
       info {
         count
         pages

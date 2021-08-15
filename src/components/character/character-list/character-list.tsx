@@ -19,16 +19,17 @@ import {usePagination} from '../../../common/hooks';
 import {COLORS} from '../../../constants/theme.constants';
 
 interface CharacterListProps {
-  filter: CharacterFilter;
+  filter?: CharacterFilter;
 }
-const CharacterList: FC<CharacterListProps> = () => {
-  const navigation = useNavigation();
 
+const CharacterList: FC<CharacterListProps> = ({filter}) => {
+  const navigation = useNavigation();
   const {loading, data, error, refetch, networkStatus} = useQuery(
     CHARACTER_READ_QUERY,
     {
       variables: {
         currentPage: 1,
+        filter: filter || {},
       },
       fetchPolicy: 'cache-and-network',
     },
@@ -40,11 +41,12 @@ const CharacterList: FC<CharacterListProps> = () => {
   const {currentPage, nextPage, paginatedData} = usePagination<CharacterEntity>(
     results,
     info?.pages || 0,
+    filter,
   );
 
   useEffect(() => {
-    refetch({currentPage: currentPage});
-  }, [currentPage, refetch]);
+    refetch({currentPage, filter});
+  }, [refetch, currentPage]);
 
   const handleLoadMore = () => {
     nextPage();
