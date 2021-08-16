@@ -1,7 +1,3 @@
-/**
- * @format
- */
-
 import 'react-native';
 import React from 'react';
 import {MockedProvider} from '@apollo/client/testing';
@@ -21,6 +17,7 @@ it('renders correctly', async () => {
     );
   });
   await wait(1000);
+  // @ts-ignore
   const appStr = JSON.stringify(app.toJSON());
   expect(appStr).toContain('RickMorty');
 });
