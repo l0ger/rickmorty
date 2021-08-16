@@ -1,8 +1,7 @@
 import React, {FC, useEffect} from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import {
   Avatar,
-  Loading,
   Separator,
   InfoRow,
   CollapseView,
@@ -12,30 +11,31 @@ import {useQuery} from '@apollo/client';
 import CHARACTER_DETAILS_READ_QUERY from '../../queries/character/character-details-read.query';
 import {CharacterEntity} from '../../entities/character.entity';
 import EpisodeList from '../../components/character/episode-list/episode-list';
+import Proview from '../../common/components/proview/proview';
+import {getApolloErrorMessage} from '../../common/utils/error-handler';
 
 const CharacterDetailsScreen: FC<ScreenProps<'CharacterDetails'>> = ({
   route,
   navigation,
 }) => {
-  const {characterName} = route.params;
+  const {characterId, characterName} = route.params;
   const {data, loading, error} = useQuery(CHARACTER_DETAILS_READ_QUERY, {
-    variables: {name: characterName},
+    variables: {id: characterId},
   });
+  const character: CharacterEntity = data?.character || {};
+
   useEffect(() => {
     navigation.setOptions({
       title: characterName,
     });
   }, [navigation, characterName]);
 
-  if (loading) {
-    return <Loading />;
-  }
-
-  const character: CharacterEntity = data?.characters?.results[0];
-
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <Proview
+        containerStyle={styles.container}
+        loading={loading}
+        error={getApolloErrorMessage(error)}>
         <Avatar uri={character.image} />
         <Separator />
         <InfoRow value={character.name} label={'Name'} />
@@ -47,8 +47,8 @@ const CharacterDetailsScreen: FC<ScreenProps<'CharacterDetails'>> = ({
         <CollapseView text={'Episode'}>
           <EpisodeList episode={character.episode || []} />
         </CollapseView>
-      </View>
-      <Separator />
+        <Separator />
+      </Proview>
     </ScrollView>
   );
 };

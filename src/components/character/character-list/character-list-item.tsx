@@ -10,13 +10,13 @@ import {CharacterEntity} from '../../../entities/character.entity';
 
 export interface UserListItemProps {
   character: CharacterEntity;
-  onPress: (name: string) => boolean;
+  onPress: (characterId: number, name: string) => boolean;
 }
 const CharacterListItem = ({character, onPress}: UserListItemProps) => {
-  const {name, image} = character;
+  const {id, image, name} = character;
 
   return (
-    <TouchableNativeFeedback onPress={() => onPress(name)}>
+    <TouchableNativeFeedback onPress={() => onPress(id, name)}>
       <View style={styles.container}>
         <Image source={{uri: image}} style={styles.image} />
         <Text style={styles.info}>{`${name}`}</Text>

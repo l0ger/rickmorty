@@ -1,4 +1,4 @@
-import {useState, useEffect, useCallback} from 'react';
+import {useState, useEffect} from 'react';
 
 function usePagination<T>(
   fetchedData: Array<T> | undefined,
@@ -29,6 +29,7 @@ function usePagination<T>(
       setCurrentPage(prevPage => (page >= 0 ? page : prevPage + 1));
     }
   };
+
   return {currentPage, nextPage, paginatedData};
 }
 

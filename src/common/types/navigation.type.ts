@@ -3,7 +3,10 @@ import {RouteProp} from '@react-navigation/native';
 
 export type RouteParamsType = {
   Home: undefined;
-  CharacterDetails: {characterName: string};
+  CharacterDetails: {
+    characterId: number;
+    characterName: string;
+  };
   SearchCharacter: {searchWord?: string | undefined} | undefined;
 };
 

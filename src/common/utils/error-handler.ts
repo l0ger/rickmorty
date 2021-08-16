@@ -10,10 +10,10 @@ export const getApolloErrorMessage = (
   if (!error) {
     return error;
   }
-  if (error.networkError) {
-    return NET_WORK_ERROR;
+  if (error.networkError && error.message) {
+    return error.message;
   } else if (error.graphQLErrors) {
     return INTERNAL_SERVER_ERROR;
   }
-  return error.message;
+  return NET_WORK_ERROR;
 };

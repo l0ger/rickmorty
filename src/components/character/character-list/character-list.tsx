@@ -56,8 +56,11 @@ const CharacterList: FC<CharacterListProps> = ({filter}) => {
     );
   };
 
-  const onItemPress = (name: string) => {
-    navigation.navigate('CharacterDetails', {characterName: name});
+  const onItemPress = (Id: number, name: string) => {
+    navigation.navigate('CharacterDetails', {
+      characterId: Id,
+      characterName: name,
+    });
     return true;
   };
   const renderItem: ListRenderItem<CharacterEntity> = ({item}) => {

@@ -21,16 +21,35 @@ const Proview: FC<LoadingProps> = ({
 }) => {
   return (
     <View style={[styles.mainView, containerStyle]}>
-      {loading && <Loading />}
+      {loading && (
+        <View style={styles.loadingView}>
+          <Loading />
+        </View>
+      )}
       {error && <Text style={styles.errorMessage}>{error}</Text>}
-      {children}
+      {!loading && !error && children}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   mainView: {flex: 1, marginBottom: 5},
-  errorMessage: {padding: 20, textAlign: 'center', fontSize: 20, width: '100'},
+  loadingView: {
+    flexDirection: 'column',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 50,
+  },
+  errorMessage: {
+    paddingTop: 15,
+    paddingBottom: 15,
+    textAlign: 'center',
+    fontSize: 16,
+    width: '100%',
+    color: 'white',
+    backgroundColor: '#DE3163',
+  },
 });
 
 export default Proview;
