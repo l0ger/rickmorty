@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 
 function usePagination<T>(
   fetchedData: Array<T> | undefined,
@@ -16,18 +16,19 @@ function usePagination<T>(
   }, [fetchedData]);
 
   useEffect(() => {
-    setCurrentPage(1);
-    setPaginatedData([]);
+    if (filter) {
+      setCurrentPage(1);
+      setPaginatedData([]);
+    }
   }, [filter]);
   const nextPage = (page = -1) => {
     if (page === 1) {
       setPaginatedData([]);
-    }
-    if (totalPage && currentPage < totalPage) {
+      setCurrentPage(1);
+    } else if (totalPage && currentPage < totalPage) {
       setCurrentPage(prevPage => (page >= 0 ? page : prevPage + 1));
     }
   };
-
   return {currentPage, nextPage, paginatedData};
 }
 

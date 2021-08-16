@@ -8,15 +8,16 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useEffect} from 'react';
 import CharacterListItem from './character-list-item';
-import {Loading, Separator} from '../../../common/components';
+import {Separator, ProView} from '../../../common/components';
 import {
   CharacterEntity,
   CharacterFilter,
 } from '../../../entities/character.entity';
-import {NetworkStatus, useQuery} from '@apollo/client';
+import {NetworkStatus, useLazyQuery} from '@apollo/client';
 import CHARACTER_READ_QUERY from '../../../queries/character/character-list-read.query';
 import {usePagination} from '../../../common/hooks';
 import {COLORS} from '../../../constants/theme.constants';
+import {getApolloErrorMessage} from '../../../common/utils/error-handler';
 
 interface CharacterListProps {
   filter?: CharacterFilter;
@@ -24,16 +25,8 @@ interface CharacterListProps {
 
 const CharacterList: FC<CharacterListProps> = ({filter}) => {
   const navigation = useNavigation();
-  const {loading, data, error, refetch, networkStatus} = useQuery(
-    CHARACTER_READ_QUERY,
-    {
-      variables: {
-        currentPage: 1,
-        filter: filter || {},
-      },
-      fetchPolicy: 'cache-and-network',
-    },
-  );
+  const [fetchCharacter, {loading, data, error, networkStatus}] =
+    useLazyQuery(CHARACTER_READ_QUERY);
   const {results, info} = data?.characters || {
     results: undefined,
     info: undefined,
@@ -45,11 +38,12 @@ const CharacterList: FC<CharacterListProps> = ({filter}) => {
   );
 
   useEffect(() => {
-    refetch({currentPage, filter});
-  }, [refetch, currentPage]);
+    fetchCharacter({variables: {currentPage, filter}});
+  }, [filter, currentPage, fetchCharacter]);
 
   const handleLoadMore = () => {
     nextPage();
+    fetchCharacter({variables: {currentPage, filter}});
   };
   const renderFooter = () => {
     return (
@@ -70,11 +64,11 @@ const CharacterList: FC<CharacterListProps> = ({filter}) => {
     return <CharacterListItem character={item} onPress={onItemPress} />;
   };
 
-  if (loading && currentPage === 1) {
-    return <Loading />;
-  }
   return (
-    <View style={styles.main}>
+    <ProView
+      containerStyle={styles.main}
+      error={getApolloErrorMessage(error)}
+      loading={loading && currentPage === 1}>
       <FlatList
         contentContainerStyle={styles.flatListContainer}
         data={paginatedData}
@@ -87,7 +81,7 @@ const CharacterList: FC<CharacterListProps> = ({filter}) => {
         ListHeaderComponent={renderFooter}
         initialNumToRender={20}
       />
-    </View>
+    </ProView>
   );
 };
 

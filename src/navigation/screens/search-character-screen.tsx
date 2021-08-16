@@ -5,10 +5,10 @@ import {CharacterList} from '../../components/character/character-list';
 
 const SearchCharacterScreen: FC<ScreenProps<'SearchCharacter'>> = ({route}) => {
   const {searchWord} = route.params || {};
-
+  const filter = {name: searchWord}; //searchWord ? {name: searchWord} : undefined;
   return (
     <View style={styles.mainView}>
-      <CharacterList filter={{name: searchWord}} />
+      <CharacterList filter={filter} />
     </View>
   );
 };
