@@ -57,7 +57,7 @@ All types that are related to remote data
 are placed here.
 
 ## Theme Guide
-you can modify theme variables
+You can modify theme variables
 from `src/constants/theme.constants` 
 I have not added theme config to ReactNavigation but we can add it in the future.
 
