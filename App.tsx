@@ -1,6 +1,11 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import {StatusBar, useColorScheme} from 'react-native';
+import {
+  StatusBar,
+  useColorScheme,
+  SafeAreaView,
+  StyleSheet,
+} from 'react-native';
 import {ApolloProvider} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './src/navigation/appNavigator';
@@ -10,10 +15,12 @@ export const AppShell = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <NavigationContainer>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppNavigator />
-    </NavigationContainer>
+    <SafeAreaView style={styles.mainView}>
+      <NavigationContainer>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <AppNavigator />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 };
 
@@ -26,3 +33,7 @@ const App = () => {
 };
 
 export default App;
+
+const styles = StyleSheet.create({
+  mainView: {flex: 1},
+});
