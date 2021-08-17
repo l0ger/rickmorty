@@ -22,7 +22,7 @@ Runs the app in the ios device or emulator.\
 Launches the test runner in the interactive watch mode.\
 Jest setup is located `jest/setup.js`. it's possible to modify jest
 configuration from package.json or dedicated jest configuration file.
-You put mocks into the `__mock__` directory.
+We can put mocks into the `__mock__` directory.
 
 ### `yarn lint`
 Launches linter
@@ -57,7 +57,7 @@ All types that are related to remote data
 are placed here.
 
 ## Theme Guide
-you can modify theme variables
+You can modify theme variables
 from `src/constants/theme.constants` 
 I have not added theme config to ReactNavigation but we can add it in the future.
 
