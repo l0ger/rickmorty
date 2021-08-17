@@ -1,19 +1,14 @@
 import React, {FC} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  ActivityIndicatorProps,
-  ViewStyle,
-  StyleProp,
-} from 'react-native';
+import {StyleSheet, Text, View, ViewStyle, StyleProp} from 'react-native';
 import {Loading} from '../loading';
-interface LoadingProps extends ActivityIndicatorProps {
+
+interface ProViewProps {
   loading?: boolean;
   error?: string;
   containerStyle?: StyleProp<ViewStyle>;
 }
-const ProView: FC<LoadingProps> = ({
+
+const ProView: FC<ProViewProps> = ({
   children,
   loading,
   error,
