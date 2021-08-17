@@ -35,9 +35,7 @@ Launches prettier to format code
 ## Directory Guide
 
 ### `src/common`
-All utils, components,configuration, etc
-that are common across project and are not dependent on
-specific business located here. 
+All utils, components, configurations, etc that are common across projects and are not dependent on specific businesses are located here.
 
 ### `src/common/types`
 Shared type over the whole project are defined here.
