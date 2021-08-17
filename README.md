@@ -11,10 +11,10 @@ In the project directory, you can run:
 
 ### `yarn android`
 
-Runs the app in the android device or emulator.\
+Runs the app in the android device or emulator.
 ### `yarn ios`
 
-Runs the app in the ios device or emulator.\
+Runs the app in the ios device or emulator.
 
 
 ### `yarn test`
