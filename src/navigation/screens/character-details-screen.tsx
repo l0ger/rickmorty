@@ -5,13 +5,13 @@ import {
   Separator,
   InfoRow,
   CollapseView,
+  ProView,
 } from '../../common/components';
 import {ScreenProps} from '../../common/types/navigation.type';
 import {useQuery} from '@apollo/client';
 import CHARACTER_DETAILS_READ_QUERY from '../../queries/character/character-details-read.query';
 import {CharacterEntity} from '../../entities/character.entity';
 import EpisodeList from '../../components/character/episode-list/episode-list';
-import Proview from '../../common/components/proview/proview';
 import {getApolloErrorMessage} from '../../common/utils/error-handler';
 
 const CharacterDetailsScreen: FC<ScreenProps<'CharacterDetails'>> = ({
@@ -32,7 +32,7 @@ const CharacterDetailsScreen: FC<ScreenProps<'CharacterDetails'>> = ({
 
   return (
     <ScrollView>
-      <Proview
+      <ProView
         containerStyle={styles.container}
         loading={loading}
         error={getApolloErrorMessage(error)}>
@@ -48,7 +48,7 @@ const CharacterDetailsScreen: FC<ScreenProps<'CharacterDetails'>> = ({
           <EpisodeList episode={character.episode || []} />
         </CollapseView>
         <Separator />
-      </Proview>
+      </ProView>
     </ScrollView>
   );
 };

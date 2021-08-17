@@ -13,7 +13,7 @@ interface LoadingProps extends ActivityIndicatorProps {
   error?: string;
   containerStyle?: StyleProp<ViewStyle>;
 }
-const Proview: FC<LoadingProps> = ({
+const ProView: FC<LoadingProps> = ({
   children,
   loading,
   error,
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Proview;
+export default ProView;
